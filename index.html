@@ -1921,20 +1921,11 @@
                         you get 100% refund + $20 apology bonus.
                     </p>
                 </div>
-                <form class="cta-form" action="#" method="POST">
-                    <input 
-                        type="email" 
-                        class="form-input" 
-                        placeholder="your.email@example.com" 
-                        required
-                    >
-                    <button type="submit" class="btn btn-cta btn-lg">
+                <div class="cta-form">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSePTb5ezLEZriv-pNLYIcmbDPMaVkvfvtNMaLcxneukwmhrGQ/viewform?usp=header" class="btn btn-cta btn-lg" target="_blank">
                         Join Waitlist NOW!
-                    </button>
-                    <p class="form-note">
-                        Or join waitlist (free) to get updates
-                    </p>
-                </form>
+                    </a>
+                </div>
                 <div class="guarantees">
                     <div class="guarantee">✓ 100% money-back guarantee</div>
                     <div class="guarantee">✓ No subscriptions ever</div>
@@ -1963,41 +1954,8 @@
         </div>
     </footer>
 <script>
-    const form = document.querySelector('.cta-form');
-    const formNote = document.querySelector('.form-note');
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const emailInput = form.querySelector('.form-input');
-        const email = emailInput.value;
-
-        if (!email) {
-            formNote.textContent = 'Please enter a valid email address.';
-            formNote.style.color = 'red';
-            return;
-        }
-
-        try {
-            const response = await fetch('http://localhost:8000/users/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
-
-            if (response.ok) {
-                window.location.href = 'thankyou.html';
-            } else {
-                const errorData = await response.json();
-                formNote.textContent = `Error: ${errorData.detail}`;
-                formNote.style.color = 'red';
-            }
-        } catch (error) {
-            formNote.textContent = 'An error occurred. Please try again later.';
-            formNote.style.color = 'red';
-        }
-    });
+    // Backend functionality is removed.
+</script>
 </script>
 </body>
 </html>
