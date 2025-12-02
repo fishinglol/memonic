@@ -1375,30 +1375,32 @@
             .hero-content {
                 grid-template-columns: 1fr;
                 gap: var(--space-3xl);
+                text-align: center;
             }
 
             .hero-text {
-                text-align: center;
-                max-width: 100%;
+                max-width: 700px;
+                margin: 0 auto;
             }
 
-            .hero-buttons {
+            .hero-buttons, .hero-stats {
                 justify-content: center;
             }
 
-            .hero-stats {
-                justify-content: center;
+            .hero-visual {
+                max-width: 500px;
+                margin: 0 auto;
             }
 
             .system-grid {
                 grid-template-columns: 1fr;
-                max-width: 400px;
+                max-width: 450px;
                 margin: 0 auto;
             }
 
             .system-card.hub-card {
                 transform: none;
-                order: -1;
+                order: -1; /* Makes hub card appear first */
             }
 
             .system-card.hub-card:hover {
@@ -1406,7 +1408,7 @@
             }
 
             .features-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
 
             .float-badge {
@@ -1422,23 +1424,36 @@
         @media (max-width: 768px) {
             :root {
                 --space-5xl: 5rem;
+                --space-4xl: 4rem;
             }
 
             .container {
                 padding: 0 var(--space-lg);
             }
 
+            .section {
+                padding: var(--space-4xl) 0;
+            }
+
+            .heading-xl {
+                font-size: clamp(2.2rem, 10vw, 3rem);
+            }
+
+            .heading-lg {
+                font-size: clamp(1.8rem, 8vw, 2.25rem);
+            }
+
             .hero {
                 padding-top: 100px;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
+            .nav-inner {
+                height: 64px;
             }
 
             .steps-container {
                 grid-template-columns: 1fr;
-                gap: var(--space-2xl);
+                gap: var(--space-3xl);
             }
 
             .steps-container::before {
@@ -1451,11 +1466,21 @@
 
             .footer-links {
                 flex-wrap: wrap;
+                gap: var(--space-md) var(--space-lg);
             }
 
             .included-items {
+                gap: var(--space-lg);
+            }
+
+            .pricing-row {
                 flex-direction: column;
-                gap: var(--space-md);
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .pricing-row-right {
+                text-align: left;
             }
         }
 
@@ -1477,6 +1502,34 @@
             .ecosystem-components {
                 flex-direction: column;
                 gap: var(--space-lg);
+                align-items: center;
+            }
+
+            .eco-component {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .bundle-cta {
+                padding: var(--space-xl);
+            }
+
+            .bundle-price {
+                font-size: 2rem;
+            }
+
+
+
+            .cta-form {
+                width: 100%;
+            }
+
+            .pricing-card {
+                padding: var(--space-2xl);
+            }
+
+            .price-amount {
+                font-size: 3rem;
             }
         }
     </style>
