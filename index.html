@@ -1480,7 +1480,42 @@
                 gap: var(--space-lg);
             }
         }
-    </style>
+    
+/* ============================================
+   PARALLAX & SCROLL ANIMATIONS
+   ============================================ */
+
+/* 1. Scroll Reveal (Fade Up) Classes */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform, opacity;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays for grids */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* 2. Parallax Wrapper for Hero */
+.hero {
+    /* Ensure hero stays relatively positioned for calculation */
+    position: relative; 
+    z-index: 1;
+}
+
+/* Make the background shapes movable by JS */
+.hero::before {
+    transition: transform 0.1s linear; /* Smooth movement */
+    will-change: transform;
+}
+</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -1951,8 +1986,91 @@
         </div>
     </footer>
 <script>
-    // Backend functionality is removed.
-</script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // ==========================================
+        // 1. SCROLL REVEAL (Fade-up Animation)
+        // ==========================================
+        
+        // Select elements to animate
+        const revealElements = document.querySelectorAll(
+            '.section-header, .system-card, .feature-card, .step, .quote-card, .pricing-card, .product-highlight, .callout'
+        );
+
+        // Add base class
+        revealElements.forEach((el, index) => {
+            el.classList.add('reveal-on-scroll');
+            // Add slight random delay to grids for visual interest
+            if(el.classList.contains('feature-card') || el.classList.contains('system-card')) {
+                const delay = (index % 3) + 1;
+                el.classList.add(`reveal-delay-${delay}`);
+            }
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, {
+            threshold: 0.15, // Trigger when 15% visible
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+
+        // ==========================================
+        // 2. PARALLAX EFFECT (Hero Section)
+        // ==========================================
+        
+        const heroSection = document.querySelector('.hero');
+        const heroText = document.querySelector('.hero-text');
+        const heroVisual = document.querySelector('.hero-visual');
+        // Since .hero::before is a pseudo-element, we can't target it directly with JS.
+        // But we can move the background-position of the hero or rely on the visual elements.
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const heroHeight = heroSection.offsetHeight;
+
+            // Only run calculation if Hero is still in view (performance)
+            if (scrollY <= heroHeight) {
+                
+                // 1. Text moves slightly down (slower than scroll)
+                // scrollY * 0.3 means it moves at 30% speed of scroll
+                heroText.style.transform = `translateY(${scrollY * 0.3}px)`;
+                heroText.style.opacity = 1 - (scrollY / 700); // Fade out
+
+                // 2. Visual System (Image) moves UP slightly (creating depth against text)
+                // Negative value makes it go opposite direction or slower
+                heroVisual.style.transform = `translateY(${scrollY * 0.15}px)`;
+            }
+        });
+
+
+        // ==========================================
+        // 3. FLOATING ELEMENTS ENHANCEMENT
+        // ==========================================
+        // Makes the badges move slightly based on mouse position for extra "alive" feel
+        
+        const heroContainer = document.querySelector('.hero');
+        
+        heroContainer.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth - e.pageX * 2) / 100;
+            const y = (window.innerHeight - e.pageY * 2) / 100;
+
+            const badge1 = document.querySelector('.float-badge.privacy');
+            const badge2 = document.querySelector('.float-badge.battery');
+            
+            if(badge1 && badge2) {
+                badge1.style.transform = `translateX(${x}px) translateY(${y}px)`;
+                badge2.style.transform = `translateX(${x * -1}px) translateY(${y * -1}px)`;
+            }
+        });
+    });
 </script>
 </body>
 </html>
