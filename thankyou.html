@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Memonic - The privacy-first AI personal assistant that never forgets you. Record your day, process locally, own your data.">
     <title>Memonic — AI That Never Forgets You</title>
+    <link rel="icon" href="images/999.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1601,6 +1602,39 @@
         .dark-mode .theme-toggle {
             --icon-fill: var(--gray-100);
         }
+
+        .cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #111;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            z-index: 1001;
+            display: none;
+        }
+
+        .cookie-consent-banner p {
+            margin: 0;
+            display: inline;
+        }
+
+        .cookie-consent-banner a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .cookie-consent-banner button {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
         /* ============================================
            RESPONSIVE DESIGN
            ============================================ */
@@ -1763,7 +1797,42 @@
                 font-size: 3rem;
             }
         }
-    </style>
+    
+/* ============================================
+   PARALLAX & SCROLL ANIMATIONS
+   ============================================ */
+
+/* 1. Scroll Reveal (Fade Up) Classes */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform, opacity;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays for grids */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* 2. Parallax Wrapper for Hero */
+.hero {
+    /* Ensure hero stays relatively positioned for calculation */
+    position: relative; 
+    z-index: 1;
+}
+
+/* Make the background shapes movable by JS */
+.hero::before {
+    transition: transform 0.1s linear; /* Smooth movement */
+    will-change: transform;
+}
+</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -1839,6 +1908,11 @@
             </div>
         </div>
     </footer>
+<button id="scroll-to-top" class="scroll-to-top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-11.59V16h2V8.41L14.59 10 16 8.59 12 4.59 8 8.59 9.41 10 11 8.41z"/>
+    </svg>
+</button>
 <div id="cookie-consent-banner" class="cookie-consent-banner">
     <p>This website uses cookies to ensure you get the best experience on our website. <a href="#">Learn more</a></p>
     <button id="cookie-consent-button">Got it!</button>
@@ -1863,6 +1937,23 @@
         if (!localStorage.getItem('cookieConsent')) {
             cookieBanner.style.display = 'block';
         }
+
+        const scrollToTopButton = document.getElementById('scroll-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopButton.classList.add('show');
+            } else {
+                scrollToTopButton.classList.remove('show');
+            }
+        });
+
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     });
 </script>
 </body>
