@@ -268,6 +268,12 @@
             transform: translateY(-1px);
         }
 
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
         /* ============================================
            HERO SECTION
            ============================================ */
@@ -1597,6 +1603,38 @@
             --icon-fill: var(--gray-100);
         }
 
+        .cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #111;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            z-index: 1001;
+            display: none;
+        }
+
+        .cookie-consent-banner p {
+            margin: 0;
+            display: inline;
+        }
+
+        .cookie-consent-banner a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .cookie-consent-banner button {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
         /* ============================================
            RESPONSIVE DESIGN
            ============================================ */
@@ -1805,26 +1843,28 @@
                     <div class="logo-icon">🧠</div>
                     Memonic
                 </a>
-                <a href="#waitlist" class="nav-cta">Join Waitlist</a>
-                <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
-                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-                        <mask class="moon" id="moon-mask">
-                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                            <circle cx="24" cy="10" r="6" fill="black" />
-                        </mask>
-                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
-                        <g class="sun-beams" stroke="currentColor">
-                            <line x1="12" y1="1" x2="12" y2="3" />
-                            <line x1="12" y1="21" x2="12" y2="23" />
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                            <line x1="1" y1="12" x2="3" y2="12" />
-                            <line x1="21" y1="12" x2="23" y2="12" />
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                        </g>
-                    </svg>
-                </button>
+                <div class="nav-actions">
+                    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+                    <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                        <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                            <mask class="moon" id="moon-mask">
+                                <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                                <circle cx="24" cy="10" r="6" fill="black" />
+                            </mask>
+                            <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                            <g class="sun-beams" stroke="currentColor">
+                                <line x1="12" y1="1" x2="12" y2="3" />
+                                <line x1="12" y1="21" x2="12" y2="23" />
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                                <line x1="1" y1="12" x2="3" y2="12" />
+                                <line x1="21" y1="12" x2="23" y2="12" />
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                            </g>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -1966,409 +2006,3 @@
                     </ul>
                     <p class="system-card-price"><strong>The brain of your system</strong></p>
                 </div>
-                
-                <!-- Phone App Card -->
-                <div class="system-card">
-                    <div class="system-card-image">
-                        <img src="images/10.png" alt="Phone App" style="max-height: 140px;">
-                    </div>
-                    <h3 class="system-card-title">Mobile App</h3>
-                    <p class="system-card-subtitle">Your AI Interface</p>
-                    <ul class="system-card-features">
-                        <li>Beautiful timeline view</li>
-                        <li>AI-powered search</li>
-                        <li>Daily insights & summaries</li>
-                        <li>Ask questions about your day</li>
-                        <li>Privacy-first design</li>
-                    </ul>
-                    <p class="system-card-price"><strong>FREE</strong> — included forever</p>
-                </div>
-            </div>
-            
-            <div class="bundle-cta">
-                <div class="bundle-price">$149</div>
-                <div class="bundle-label">Complete Bundle — Early Bird (First 100)</div>
-                <div class="bundle-original">Regular Price: $199</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features section" id="features">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Features</span>
-                <h2 class="section-title heading-lg">What Makes Memonic Different?</h2>
-                <p class="section-description">
-                    Not just another voice recorder. A complete AI system designed for privacy-conscious professionals 
-                    who are tired of repeating themselves to forgetful AI assistants.
-                </p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">12H+</div>
-                    <h3 class="feature-title">Record All Day</h3>
-                    <p class="feature-description">
-                        12+ hours of continuous recording. Smart pen stores everything locally on SD card. 
-                        No cloud, no internet needed during the day.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="images/55.png" alt="Privacy">
-                    </div>
-                    <h3 class="feature-title">100% Private</h3>
-                    <p class="feature-description">
-                        Your data never leaves your home. All processing happens on your Raspberry Pi base station. 
-                        No cloud APIs, no data mining, no compromises.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="images/11.png" alt="AI Memory">
-                    </div>
-                    <h3 class="feature-title">AI That Remembers</h3>
-                    <p class="feature-description">
-                        Whisper transcription + local LLM processing. Your AI learns your patterns, understands context, 
-                        and builds a real memory of your work and life.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="images/33.png" alt="Sync">
-                    </div>
-                    <h3 class="feature-title">Seamless Sync</h3>
-                    <p class="feature-description">
-                        Come home, dock your pen. Automatic sync while charging. Wake up to processed insights and summaries. 
-                        Zero manual effort.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="images/22.png" alt="Interface">
-                    </div>
-                    <h3 class="feature-title">Beautiful Interface</h3>
-                    <p class="feature-description">
-                        Clean phone app shows your daily timeline, key moments, and AI-generated summaries. 
-                        Search through everything you've ever recorded.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="images/66.png" alt="One-time Payment">
-                    </div>
-                    <h3 class="feature-title">One-Time Payment</h3>
-                    <p class="feature-description">
-                        No subscriptions. Ever. Buy once, own forever. Free lifetime updates. 
-                        Your privacy shouldn't have a monthly fee.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">How It Works</span>
-                <h2 class="section-title heading-lg">Three Simple Steps</h2>
-                <p class="section-description">
-                    Setup once. Use forever. No technical skills required.
-                </p>
-            </div>
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Record Your Day</h3>
-                    <p class="step-description">
-                        Clip the pen to your shirt. Press the button. It records everything you say throughout the day. 
-                        Stores locally on SD card—no internet needed.
-                    </p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <!-- Visual for Step 2 -->
-                    <div class="step-visual">
-                        <div class="step-visual-glow"></div>
-                        <img src="images/44.png" alt="Dock your pen on the Base Station">
-                    </div>
-                    <h3 class="step-title">Auto-Sync at Home</h3>
-                    <p class="step-description">
-                        Place pen on charging dock when you get home. It automatically syncs to your base station. 
-                        Charges while processing overnight.
-                    </p>
-                    <span class="step-detail">🟡 Syncing → ⚪ Processing → 🟢 Ready</span>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Wake Up to Insights</h3>
-                    <p class="step-description">
-                        Open your phone app. See your day summarized, transcribed, and organized. 
-                        Search anything. Ask questions. Your AI knows it all.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof Section -->
-    <section class="social-proof section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">You're Not Alone</span>
-                <h2 class="section-title heading-lg">Thousands Feel The Same Way</h2>
-                <p class="section-description">
-                    Privacy fatigue and AI Memnory is real. You're tired of fighting for what should be yours.
-                </p>
-            </div>
-            
-            <div class="quotes-container">
-                <div class="quote-card">
-                    <p class="quote-text">
-                        This is something younger generations just don't get. Eveyone still around in ten years is already completely utterly f$cked. We only know what we know. Hopefully a new generation WILL eventually pop up thats says "enough" with this nonsense. It's as plain as the nose on your face people are already being driven mad by the constant monitoring and manipulation of every aspect of their lives. This just wasn't technically possible 20 years ago.
-                    </p>
-                    <p class="quote-author">— *****913, r/GPT3</p>
-                </div>
-                <div class="quote-card">
-                    <p class="quote-text">
-                        I might as well give it away deliberately, and at least get something out of it. 
-                        So, it's really just practical at this point.
-                    </p>
-                    <p class="quote-author">— as**** r/OpenAI</p>
-                </div>
-                <div class="quote-card">
-                    <p class="quote-text">
-                        In my experience, ChatGPT (especially 40) actually remembers a lot of things that are not in Saved Memories too. I'lI create story characters in one chat, and even though it's not in Saved Memories, I notice GPT still remembers that character even when I mention (or even just hint about it without explicitly mentioning the name) in another brand new chat. So even if Saved Memories becomes full, I suspect PT will still continue to remember things if I mention it enough in our conversations
-
-
-                    </p>
-                    <p class="quote-author">— *******lily r/Artificialinteligence</p>
-                </div>
-            </div>
-            
-            <!-- Product Highlight -->
-            <div class="product-highlight">
-                <div class="product-highlight-image">
-                    <img src="images/88.png" alt="Memonic Base Station">
-                </div>
-                <div class="product-highlight-text">
-                    <h3>Privacy That's Actually Beautiful</h3>
-                    <p>
-                        A beautiful base station that sits on your desk. No blinking server lights. 
-                        No cables everywhere. Just clean design that works. 
-                        When someone asks "What is that?" you can proudly say: "My private AI."
-                    </p>
-                </div>
-            </div>
-            
-            <div class="callout">
-                <h3>This Isn't About Judging Anyone</h3>
-                <p>
-                    This is about giving YOU the option you thought was impossible: 
-                    Privacy AND convenience. You shouldn't have to choose.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing section" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Pricing</span>
-                <h2 class="section-title heading-lg">What's Your Privacy Worth?</h2>
-            </div>
-            <div class="pricing-container">
-                <div class="pricing-card">
-                    <div class="pricing-row">
-                        <span class="pricing-row-left">VPN Service</span>
-                        <span class="pricing-row-right">$120/year → Still tracks you</span>
-                    </div>
-                    <div class="pricing-row">
-                        <span class="pricing-row-left">Privacy Phone</span>
-                        <span class="pricing-row-right">$800 → Still on Google's network</span>
-                    </div>
-                    <div class="pricing-row">
-                        <span class="pricing-row-left">Self-hosted LLM</span>
-                        <span class="pricing-row-right">$2,000+ → Requires IT degree</span>
-                    </div>
-                    <div class="pricing-row">
-                        <span class="pricing-row-left">Constant Worry</span>
-                        <span class="pricing-row-right">Priceless → Exhausting</span>
-                    </div>
-                    <div class="pricing-row highlight">
-                        <span class="pricing-row-left">Memonic System</span>
-                        <span class="pricing-row-right">$149 once → Actually private</span>
-                    </div>
-                    
-                    <!-- What's Included -->
-                    <div class="whats-included">
-                        <h4>What's Included in $149:</h4>
-                        <div class="included-items">
-                            <div class="included-item">
-                                <img src="images/1.png" alt="Smart Pen">
-                                <span>Smart Pen</span>
-                            </div>
-                            <div class="included-item">
-                                <img src="images/88.png" alt="Base Station" style="width: 50px; height: 50px;">
-                                <span>Base Station</span>
-                            </div>
-                            <div class="included-item">
-                                <img src="images/10.png" alt="Phone App">
-                                <span>Mobile App</span>
-                            </div>
-                            <div class="included-item">
-                                <span class="emoji-icon">🔌</span>
-                                <span>All Cables</span>
-                            </div>
-                            <div class="included-item">
-                                <span class="emoji-icon">♾️</span>
-                                <span>Lifetime Updates</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="price-box">
-                        <div class="price-amount">$149</div>
-                        <div class="price-period">Early Bird Pre-Order (First 100)</div>
-                        <div class="price-original">Regular: $199</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section section" id="waitlist">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="heading-lg">You're Tired Of Fighting.<br>Let Your AI Do The Work.</h2>
-                <p class="cta-subtitle">
-                    Join 500+ people waiting for the privacy-first AI assistant that actually works.
-                </p>
-                <div class="dev-notice">
-                    <h4>🚧 Currently In Development</h4>
-                    <p>Expected Shipping: Q2 2025.We will notify you in email</p>
-                </div>
-                <div class="cta-form">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSePTb5ezLEZriv-pNLYIcmbDPMaVkvfvtNMaLcxneukwmhrGQ/viewform?usp=header" class="btn btn-cta btn-lg" target="_blank">
-                        Join Waitlist NOW!
-                    </a>
-                </div>
-                <div class="guarantees">
-                    <div class="guarantee">✓ 100% money-back guarantee</div>
-                    <div class="guarantee">✓ No subscriptions ever</div>
-                    <div class="guarantee">✓ Lifetime updates included</div>
-                    <div class="guarantee">✓ Ships when ready</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="#" class="footer-link">Terms of Service</a>
-                    <a href="#" class="footer-link">Refund Policy</a>
-                    <a href="#" class="footer-link">Contact</a>
-                </div>
-                <p class="footer-copyright">
-                    © 2025 Memonic. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        
-        // ==========================================
-        // 1. SCROLL REVEAL (Fade-up Animation)
-        // ==========================================
-        
-        // Select elements to animate
-        const revealElements = document.querySelectorAll(
-            '.section-header, .system-card, .feature-card, .step, .quote-card, .pricing-card, .product-highlight, .callout'
-        );
-
-        // Add base class
-        revealElements.forEach((el, index) => {
-            el.classList.add('reveal-on-scroll');
-            // Add slight random delay to grids for visual interest
-            if(el.classList.contains('feature-card') || el.classList.contains('system-card')) {
-                const delay = (index % 3) + 1;
-                el.classList.add(`reveal-delay-${delay}`);
-            }
-        });
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    revealObserver.unobserve(entry.target); // Only animate once
-                }
-            });
-        }, {
-            threshold: 0.15, // Trigger when 15% visible
-            rootMargin: "0px 0px -50px 0px"
-        });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-
-
-        // ==========================================
-        // 2. PARALLAX EFFECT (Hero Section)
-        // ==========================================
-        
-        const heroSection = document.querySelector('.hero');
-        const heroText = document.querySelector('.hero-text');
-        const heroVisual = document.querySelector('.hero-visual');
-        // Since .hero::before is a pseudo-element, we can't target it directly with JS.
-        // But we can move the background-position of the hero or rely on the visual elements.
-        
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const heroHeight = heroSection.offsetHeight;
-
-            // Only run calculation if Hero is still in view (performance)
-            if (scrollY <= heroHeight) {
-                
-                // 1. Text moves slightly down (slower than scroll)
-                // scrollY * 0.3 means it moves at 30% speed of scroll
-                heroText.style.transform = `translateY(${scrollY * 0.3}px)`;
-                heroText.style.opacity = 1 - (scrollY / 700); // Fade out
-
-                // 2. Visual System (Image) moves UP slightly (creating depth against text)
-                // Negative value makes it go opposite direction or slower
-                heroVisual.style.transform = `translateY(${scrollY * 0.15}px)`;
-            }
-        });
-
-
-        // ==========================================
-        // 3. FLOATING ELEMENTS ENHANCEMENT
-        // ==========================================
-        // Makes the badges move slightly based on mouse position for extra "alive" feel
-        
-        const heroContainer = document.querySelector('.hero');
-        
-        heroContainer.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth - e.pageX * 2) / 100;
-            const y = (window.innerHeight - e.pageY * 2) / 100;
-
-            const badge1 = document.querySelector('.float-badge.privacy');
-            const badge2 = document.querySelector('.float-badge.battery');
-            
-            if(badge1 && badge2) {
-                badge1.style.transform = `translateX(${x}px) translateY(${y}px)`;
-                badge2.style.transform = `translateX(${x * -1}px) translateY(${y * -1}px)`;
-            }
-        });
-    });
-</script>
-</body>
-</html>
