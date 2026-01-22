@@ -1,0 +1,2135 @@
+/* Split Scroll Section - Clean Override */
+.split-section {
+  display: flex !important;
+  flex-direction: row !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 80px 5% !important;
+  gap: 60px !important;
+  
+  /* 1. เปลี่ยนพื้นหลังเป็นดำ */
+  background: #000000 !important; 
+  
+  position: relative !important;
+  z-index: 100 !important;
+  box-sizing: border-box;
+}
+
+.left-column {
+  flex: 1 !important;
+  padding-right: 40px;
+  position: relative;
+}
+
+.text-block {
+  height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding: 40px 0 !important;
+  opacity: 0.3 !important;
+  transition: opacity 0.6s ease !important;
+}
+
+.text-block.active {
+  opacity: 1 !important;
+}
+
+.text-block h2 {
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  margin-bottom: 24px !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.1 !important;
+  
+  /* 2. เปลี่ยนหัวข้อเป็นสีขาว */
+  color: #ffffff !important; 
+}
+
+.text-block p {
+  font-size: 21px !important;
+  line-height: 1.5 !important;
+  
+  /* 3. เปลี่ยนคำบรรยายเป็นสีเทา Apple */
+  color: #86868b !important; 
+  
+  max-width: 500px !important;
+}
+
+.right-column {
+  flex: 1 !important;
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.image-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 80% !important;
+  max-width: 600px !important;
+}
+
+.image-wrapper {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0 !important;
+  transition: opacity 0.8s ease !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  
+  /* 4. เปลี่ยนเงาให้ฟุ้งๆ เรืองแสงนิดๆ แทนเงาแข็งๆ */
+  box-shadow: 0 0 50px rgba(41, 151, 255, 0.1) !important; 
+  border: 1px solid rgba(255,255,255,0.1) !important; /* เส้นขอบบางๆ */
+}
+
+.image-wrapper.active {
+  opacity: 1 !important;
+}
+
+.image-wrapper img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* --- NEW: PRIVACY SCROLLER --- */
+/* Find this block in your CSS and update it */
+.privacy-section {
+  background-color: #000000;
+  padding: 500px 0;
+  width: 100%;
+  overflow: hidden;
+
+  /* --- ADD THESE TWO LINES --- */
+  position: relative; /* Allows z-index to work */
+  z-index: 20; /* Puts this section ON TOP of the bracelet (which is z-index 10) */
+}
+.privacy-header {
+  padding-left: max(5%, 40px); /* Align with other sections */
+  margin-bottom: 40px;
+}
+
+.privacy-header h2 {
+  color: white;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* The Magic Scrolling Part */
+.privacy-scroller {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto; /* Allows side scrolling */
+  padding-left: max(5%, 40px); /* Start content with some padding */
+  padding-right: 40px;
+  padding-bottom: 40px; /* Space for scrollbar */
+
+  /* Hide scrollbars for clean look */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.privacy-scroller::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* The Cards */
+.privacy-card {
+  min-width: 300px; /* Fixed width so they don't squish */
+  height: 380px;
+  background-color: #1d1d1f; /* Dark Grey Card */
+  border-radius: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease;
+  /* Optional: Snap effect */
+  scroll-snap-align: start;
+}
+
+.privacy-card:hover {
+  transform: scale(1.02); /* Slight pop on hover */
+  background-color: #2c2c2e;
+}
+
+/* Typography inside Card */
+/* --- ICON STYLES --- */
+.card-icon {
+  font-size: 3.5rem; /* ขนาดไอคอน */
+  margin-bottom: 20px;
+  color: #ffffff; /* สีขาวล้วน (White) */
+  
+  /* Reset ค่าเก่าทิ้ง (กรณีเคยทำ Gradient ไว้) */
+  background: none;
+  -webkit-text-fill-color: initial;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; ไม่จำเป็นถ้าไม่มี border */
+}
+
+/* เพิ่ม Effect เรืองแสงนิดๆ ให้ดูแพง (Optional) */
+.privacy-card:hover .card-icon {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  transition: text-shadow 0.3s ease;
+}
+
+.blue-text {
+  color: #2997ff; /* Apple Blue */
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.white-text {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* The Little Plus Button */
+.card-plus {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  background: #3a3a3c;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+/* --- NEW: CINEMATIC VIDEO SECTION --- */
+.video-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full Screen */
+  background-color: black;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end; /* Pushes text to the bottom */
+  justify-content: center;
+}
+
+/* The Video Styling */
+.cinematic-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video fills screen without stretching */
+  transform: scale(1.3); /* Zoom in the image */
+  z-index: 0;
+  opacity: 0.6; /* Dims video so text is readable */
+}
+
+/* The Text Styling */
+.video-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  padding-bottom: 100px; /* Space from bottom */
+  max-width: 800px;
+}
+
+.video-headline {
+  font-size: 5rem;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  /* Apple Gradient Text Effect */
+  background: linear-gradient(180deg, #ffffff 0%, #666666 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.video-sub {
+  font-size: 1.5rem;
+  color: #a1a1a6; /* Classic Apple light grey */
+  line-height: 1.5;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .video-headline {
+    font-size: 3rem;
+  }
+  .video-sub {
+    font-size: 1.2rem;
+    padding: 0 20px;
+  }
+}
+/* --- NEW: INNOVATION SECTION (Dark Mode) --- */
+.innovation-section {
+  background-color: #000000;
+  width: 100%;
+  height: 300vh; /* Very tall to allow for long scrolling time */
+  position: relative;
+  z-index: 10;
+}
+
+.sticky-tech-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.tech-text {
+  text-align: center;
+  color: white;
+  z-index: 2;
+  margin-bottom: 20px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.tech-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #86868b;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.tech-text h2 {
+  font-size: 5rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+  background: linear-gradient(180deg, #fff, #888);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tech-text p {
+  font-size: 1.5rem;
+  color: #86868b;
+  max-width: 600px;
+  margin: 20px auto 0 auto;
+}
+
+#tech-model {
+  width: 100%;
+  height: 80vh; /* Big model */
+  position: absolute;
+  top: 10%;
+  z-index: 1;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+  .tech-text h2 {
+    font-size: 3rem;
+  }
+  .innovation-section {
+    height: 200vh;
+  }
+}
+/* --- GLOBAL STYLES --- */
+body {
+  margin: 0;
+  background-color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Helvetica,
+    sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- SECTIONS --- */
+.model-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+model-viewer {
+  width: 100%;
+  height: 100%;
+}
+.content-layer {
+  position: relative;
+  z-index: 10;
+}
+
+.highlights-section {
+    background-color: #ffffff;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    box-shadow: 0px -20px 40px rgba(0,0,0,0.1);
+    
+    /* --- ADD THESE 2 LINES TO FIX THE OVERLAP --- */
+    position: relative;  /* Allows z-index to work */
+    z-index: 10;         /* Forces this white box to sit ON TOP of the bracelet */
+}
+.section-header {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+}
+.section-header h2 {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #000000;
+}
+
+.card-scroller {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding-bottom: 60px;
+  width: 100%;
+  padding-left: max(5%, 40px);
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+.card-scroller::-webkit-scrollbar {
+  display: none;
+}
+.card {
+  position: relative;
+  min-width: 550px;
+  height: 680px;
+  background: #000; /* Black base for loading state */
+  border-radius: 40px; /* Slightly more rounded for premium feel */
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-img, .card-video, .card-image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.zoomed-img {
+  transform: scale(1.3); /* Zoomed in even more as requested */
+}
+
+.card-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 50px;
+  z-index: 2;
+  box-sizing: border-box;
+  
+  /* Subtle dark gradient at the bottom to make white text pop */
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 100%);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card h3 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #ffffff; /* White text for image overlay */
+  text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.card p {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.9); /* Slightly transparent white */
+  margin: 0;
+  max-width: 95%;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card-image-placeholder {
+  background: #1d1d1f; /* Dark placeholder to match overlay style */
+}
+
+.closer-look-section {
+  background-color: #ffffff;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #1d1d1f;
+}
+
+.ui-container {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+}
+
+.ui-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.menu-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  padding: 15px 25px;
+  color: #6e6e73;
+  font-size: 1.1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.menu-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #1d1d1f;
+}
+
+.menu-btn.active {
+  background: #1d1d1f;
+  color: white;
+  font-weight: 600;
+}
+.btn-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.info-box {
+  background: #f5f5f7;
+  padding: 25px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s ease;
+}
+.info-box p {
+  color: #1d1d1f;
+  margin: 0;
+  line-height: 1.4;
+  font-size: 1.1rem;
+}
+.info-box span {
+  color: #86868b;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.carousel-stage {
+  width: 100%;
+  height: 100%;
+  margin-left: 20%;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: translateX(0);
+}
+.carousel-stage.fade-out-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+.carousel-stage.fade-out-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+#closer-look-model {
+  width: 100%;
+  height: 100%;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #1d1d1f;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.nav-arrow:hover {
+  background: #1d1d1f;
+  color: white;
+  transform: scale(1.1);
+}
+.nav-arrow-left {
+  left: 35%;
+}
+.nav-arrow-right {
+  right: 5%;
+}
+
+.product-label {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  text-align: right;
+  pointer-events: none;
+}
+.product-label h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+.product-label p {
+  color: #86868b;
+  margin: 5px 0 0 0;
+}
+
+/* --- STORY TELLING SECTIONS --- */
+.story-sequence {
+  background-color: #ffffff;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 50px;
+}
+
+.story-step {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.story-step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-spacer {
+  height: 120vh;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  /* No global gradient-text size here, it's handled by specific classes */
+}
+
+/* --- NEW: STORY TELLING SECTION --- */
+.story-section {
+  background-color: #ffffff;
+  width: 100%;
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  z-index: 2; /* On top of everything */
+}
+
+.story-block {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Hidden by default */
+  transform: translateY(50px); /* Pushed down */
+  transition: all 1s ease; /* Slow smooth fade */
+}
+
+.story-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 1. Global Gradient Style (Just the colors and animation) */
+.gradient-text {
+    font-weight: 700;
+    background: linear-gradient(
+        90deg, 
+        #33c3f0 0%,   /* ฟ้า Apple */
+        #6a11cb 25%,  /* ม่วงเข้ม */
+        #ff6b6b 50%,  /* ชมพูพีช (แซมหน่อยๆ ให้ดูแพง) */
+        #33c3f0 100%  /* วนกลับมาฟ้า */
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: shine 4s linear infinite;
+}
+
+/* 2. HERO SECTION SPECIFIC (Small Size) */
+/* This makes "Your Friend Know You" fit on the same line */
+.hero-subtitle .gradient-text {
+    font-size: inherit;      /* Inherits 2rem from the grey text */
+    display: inline;         /* Keeps it on the same line */
+}
+
+/* 3. STORY SECTION SPECIFIC (Big Size) */
+/* This makes "Works seamlessly" BIG again */
+.story-block .gradient-text {
+    font-size: 5rem;         /* Forces it to be big */
+    display: block;          /* Allows it to be its own block */
+    line-height: 1.1;
+    text-align: center;
+}
+
+/* 4. Mobile Adjustment for Story Text */
+@media (max-width: 768px) {
+    .story-block .gradient-text {
+        font-size: 3rem;     /* Smaller on phones so it fits */
+    }
+}
+
+.grad-1 {
+  background-image: linear-gradient(90deg, #ff9a9e 0%, #fecfef 100%);
+}
+.grad-2 {
+  background-image: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%);
+}
+.grad-3 {
+  background-image: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+}
+.grad-4 {
+  background: -webkit-linear-gradient(45deg, #fccb90, #d57eeb);
+}
+
+.story-reveal {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* --- NEW: LIFESTYLE SECTION --- */
+.lifestyle-section {
+  width: 100%;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background-color: #f5f5f7;
+}
+
+.lifestyle-wrapper {
+  max-width: 1800px;
+  margin: 0 auto;
+  background: #000000;
+  border-radius: 60px;
+  padding: 120px;
+  display: flex;
+  align-items: center;
+  gap: 80px; /* Reduced gap to give more room for image */
+}
+
+.lifestyle-text-side {
+  flex: 0.6; /* Smaller proportion for text */
+  color: white;
+  max-width: 550px; /* Reduced to give more space to image */
+}
+
+.lifestyle-kicker {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f5a623;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: 25px;
+}
+
+.lifestyle-headline {
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0 0 40px 0;
+  color: #ffffff;
+}
+
+.lifestyle-desc {
+  font-size: 1.6rem;
+  line-height: 1.65;
+  font-weight: 400;
+  margin-bottom: 45px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* The Icon Feature at bottom */
+.lifestyle-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.feature-icon {
+  font-size: 28px;
+  width: 55px;
+  height: 55px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.feature-text strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.icon-gradient {
+  background: linear-gradient(135deg, #33c3f0 0%, #6a11cb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Image Side */
+.lifestyle-image-side {
+  flex: 1.4; /* Larger proportion for image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lifestyle-img-card {
+  width: 100%;
+  max-width: none; /* Remove constraint to let it grow to container size */
+  height: auto;
+  border-radius: 35px;
+  object-fit: cover;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive: Stack on mobile */
+@media (max-width: 900px) {
+  .lifestyle-wrapper {
+    flex-direction: column;
+    padding: 40px 30px;
+    gap: 40px;
+  }
+  
+  .lifestyle-text-side {
+    max-width: 100%;
+  }
+  
+  .lifestyle-headline {
+    font-size: 2.5rem;
+  }
+  
+  .lifestyle-img-card {
+    max-width: 100%;
+  }
+}
+
+/* --- NEW: BENEFITS GRID --- */
+.benefits-section {
+  background-color: #ffffff; /* White Background */
+  padding: 100px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  border-radius: 30px;
+  padding: 40px;
+  height: 600px; /* Tall cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effect */
+.benefit-card:hover {
+  transform: scale(1.01);
+}
+
+/* Dark Card Style (Like your screenshot) */
+.card-dark {
+  background-color: #000000;
+  color: white;
+}
+
+
+
+/* Visual Placeholders (Replace with <img> later) */
+.card-visual {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+.visual-rect {
+  width: 60%;
+  height: 80%;
+  background: #333;
+  border-radius: 20px;
+  border: 2px solid #555;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .benefits-grid {
+    grid-template-columns: 1fr; /* Stack on mobile */
+    height: auto;
+  }
+  .benefit-card {
+    height: 500px;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    Roboto, Oxygen, Ubuntu, sans-serif;
+  background: #fff;
+  color: #1d1d1f;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+.left-column {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.text-block {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0;
+  opacity: 0.3;
+  transition: opacity 0.6s ease;
+}
+
+.text-block.active {
+  opacity: 1;
+}
+
+.text-block h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.text-block p {
+  font-size: 21px;
+  line-height: 1.5;
+  color: #6e6e73;
+  max-width: 500px;
+}
+
+.right-column {
+  flex: 1;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 80%;
+  max-width: 600px;
+}
+
+.image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.image-wrapper.active {
+  opacity: 1;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f7;
+}
+
+.footer p {
+  font-size: 24px;
+  color: #6e6e73;
+}
+
+@media (max-width: 1024px) {
+  .split-section {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .right-column {
+    position: relative;
+    height: 60vh;
+    margin-bottom: 40px;
+  }
+
+  .text-block {
+    height: auto;
+    min-height: 60vh;
+  }
+
+  .text-block h2 {
+    font-size: 36px;
+  }
+
+  .text-block p {
+    font-size: 18px;
+  }
+
+
+}
+
+.comparison-table tbody tr {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.comparison-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.feature-label {
+  padding: 30px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1d1d1f;
+  background: #fafafa;
+}
+
+.value-cell {
+  padding: 30px 20px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.value-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.value-content strong {
+  font-size: 18px;
+  color: #1d1d1f;
+  font-weight: 600;
+}
+
+.value-content p {
+  font-size: 14px;
+  color: #6e6e73;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.highlight-green {
+  background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
+}
+
+.highlight-red {
+  background: linear-gradient(135deg, #ffebee 0%, #fef5f5 100%);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .comparison-table-wrapper {
+    overflow-x: auto;
+    border-radius: 20px;
+  }
+
+  .comparison-table {
+    min-width: 700px;
+  }
+
+  .comparison-header h2 {
+    font-size: 36px;
+  }
+
+  .comparison-header p {
+    font-size: 18px;
+  }
+
+  .feature-label {
+    padding: 20px 15px;
+    font-size: 14px;
+  }
+
+  .value-cell {
+    padding: 20px 15px;
+  }
+
+  .value-content strong {
+    font-size: 16px;
+  }
+
+  .value-content p {
+    font-size: 13px;
+  }
+}
+
+/* Comparison Table Section */
+.comparison-section {
+  background: #f5f5f7;
+  padding: 100px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.comparison-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.comparison-header h2 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.comparison-header p {
+  font-size: 21px;
+  color: #6e6e73;
+}
+
+.comparison-table-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-table thead {
+  background: linear-gradient(135deg, #000000 0%, #b163ff 100%);
+}
+
+.comparison-table th {
+  padding: 30px 20px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+
+.feature-column {
+  width: 25%;
+  text-align: left !important;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.brand-column {
+  width: 37.5%;
+}
+
+.brand-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-name {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.brand-sub {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 12px 0;
+}
+
+.nav-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.join-btn {
+  background: #1d1d1f;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.join-btn:hover {
+  background: #000;
+  transform: scale(1.05);
+}
+
+/* Add padding to body so content doesn't hide under navbar */
+body {
+  padding-top: 70px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .nav-content {
+    padding: 0 20px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .join-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+
+/* --- WAITLIST SECTION (NEON WAVE EDITION) --- */
+.waitlist-section {
+    /* 1. ใส่รูปพื้นหลัง */
+    background-image: url('assets/images/waitlist_bg.png');
+    background-size: 120%;       /* Zoom in 20% more */
+    background-position: center;  /* จัดกึ่งกลาง */
+    background-repeat: no-repeat;
+    
+    /* Make it full screen */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 120px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative; /* เพื่อให้ overlay ทำงาน */
+    overflow: hidden;
+}
+
+/* 2. เพิ่มแผ่นฟิล์มสีดำจางๆ (Overlay) เพื่อให้อ่านตัวหนังสือออก */
+.waitlist-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* ปรับความมืดตรงนี้ (0.4 = 40%) */
+    z-index: 1;
+}
+
+.waitlist-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* ดันเนื้อหาขึ้นมาเหนือแผ่นฟิล์ม */
+}
+
+/* Animation classes for scroll effects */
+.waitlist-badge,
+.waitlist-title,
+.waitlist-subtitle,
+.waitlist-form,
+.social-proof,
+.countdown-timer {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.waitlist-section.animate .waitlist-badge {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.waitlist-section.animate .waitlist-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.waitlist-section.animate .waitlist-subtitle {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.waitlist-section.animate .waitlist-form {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.waitlist-section.animate .social-proof {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.waitlist-section.animate .countdown-timer {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* --- TEXT COLORS (เปลี่ยนเป็นสีขาวให้หมด) --- */
+
+.waitlist-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    /* เปลี่ยนเป็นพื้นหลังกระจกใส */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff; /* ตัวหนังสือขาว */
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    background: #00C6FF; /* จุดสีฟ้าเข้ากับธีม */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00C6FF; /* เรืองแสง */
+    animation: pulse 2s infinite;
+}
+
+.waitlist-title {
+    font-size: 64px;
+    font-weight: 700;
+    color: #ffffff; /* ขาว */
+    margin: 0 0 20px 0;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5); /* เงาตัวหนังสือ */
+}
+
+.waitlist-subtitle {
+    font-size: 21px;
+    color: rgba(255, 255, 255, 0.8); /* ขาวจางๆ */
+    line-height: 1.5;
+    margin: 0 0 40px 0;
+}
+
+/* --- FORM STYLING (GLASS STYLE) --- */
+.waitlist-form {
+  display: flex;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto 30px auto;
+}
+
+.email-input {
+    flex: 1;
+    padding: 16px 20px;
+    /* พื้นหลังโปร่งใสแบบกระจก */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    color: white; /* เวลาพิมพ์ตัวหนังสือเป็นสีขาว */
+    backdrop-filter: blur(5px);
+}
+
+.email-input::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Placeholder สีจาง */
+}
+
+.email-input:focus {
+    border-color: #00C6FF;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.submit-btn {
+    /* ปุ่มไล่เฉดสีฟ้า-น้ำเงิน */
+    background: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 0 20px rgba(0, 198, 255, 0.4); /* เรืองแสง */
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 198, 255, 0.6);
+}
+
+/* --- COUNTDOWN & PROOF COLORS --- */
+.social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -8px;
+  font-size: 18px;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.proof-text {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-value {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff; /* เลขสีขาว */
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(0, 198, 255, 0.5); /* เลขเรืองแสง */
+}
+
+.time-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+}
+
+.time-separator {
+    font-size: 36px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 -10px;
+    padding-bottom: 20px;
+}
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .waitlist-title {
+    font-size: 42px;
+  }
+
+  .waitlist-subtitle {
+    font-size: 18px;
+  }
+
+  .waitlist-form {
+    flex-direction: column;
+  }
+
+  .countdown-timer {
+    gap: 10px;
+  }
+
+  .time-value {
+    font-size: 36px;
+  }
+
+  .time-separator {
+    font-size: 28px;
+    margin: 0 -5px;
+  }
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* MOVED TO TOP: Position text above the 3D model */
+  justify-content: flex-start; 
+  padding-top: 120px; /* Space from the top edge */
+  
+  z-index: 5; /* Ensures it sits ABOVE the 3D model */
+  pointer-events: none; /* Allows clicking the bracelet through the text */
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 8rem; /* Very large text */
+  font-weight: 700;
+  letter-spacing: -0.03em; /* Tighter spacing for modern look */
+  color: #1d1d1f;
+  margin: 0;
+  line-height: 1;
+  /* Optional: Slight transparency to blend with model */
+  opacity: 0.9;
+}
+
+.hero-subtitle {
+  font-size: 2rem; /* Sets the size for the grey text */
+  font-weight: 400;
+  color: #6e6e73;
+  margin-top: 15px;
+  letter-spacing: 0.02em;
+  text-align: center; /* Centers the text */
+  width: 100%; /* Ensures it has room */
+  /* REMOVED: display: flex; (This was causing the line break issue) */
+}
+
+/* 5. FIX Compatibility (background-clip) */
+.gradient-text, .story-block .gradient-text, .tech-text h2, .video-headline {
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* SAFETY FIX: Keeps Hero text small, and Story text big */
+
+/* 1. Rule for the Hero Section (First Page) */
+.hero-subtitle .gradient-text {
+    font-size: inherit;      /* Forces it to be small (2rem) */
+    display: inline;         /* Keeps it on the same line */
+}
+
+/* 2. Rule for the Story Section (Scroll Down Page) */
+.story-block .gradient-text {
+    font-size: 5rem;         /* Forces it to be BIG */
+    display: block;          /* Allows it to stand alone */
+    line-height: 1.1;
+    text-align: center;
+}
+/* --- POPUP MODAL CSS --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px); /* Apple Blur Effect */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #1d1d1f;
+    width: 90%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    transform: scale(0.9);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-icon { 
+  font-size: 4rem; 
+  margin-bottom: 20px; 
+  color: white; 
+  display: flex; 
+  justify-content: center; 
+}
+.modal-title { color: #2997ff; font-size: 2rem; margin: 0 0 5px 0; }
+.modal-subtitle { color: white; font-size: 1.1rem; margin-bottom: 20px; }
+.modal-divider { width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin: 20px 0; }
+.modal-body { color: #a1a1a6; font-size: 1rem; line-height: 1.5; text-align: left; }
+
+.modal-close {
+    position: absolute; top: 15px; right: 15px;
+    background: rgba(255,255,255,0.1); border: none;
+    color: white; width: 30px; height: 30px; border-radius: 50%;
+    cursor: pointer; font-size: 20px;
+}
+.privacy-card { cursor: pointer; transition: transform 0.2s; }
+.privacy-card:active { transform: scale(0.98); }
+
+/* --- SCROLL EXPAND STYLES --- */
+
+.expand-section {
+    width: 100%;
+    height: 150vh; /* สูงพิเศษเพื่อให้มีระยะไถ */
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 20;
+}
+
+.expanding-window {
+    width: 100%;       /* Base size is full width */
+    max-width: none;   /* Remove limit to allow full screen bleed */
+    aspect-ratio: 16/9; 
+    transform: scale(0.85); /* Start at 85% visual size */
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    
+    /* 🚨 สำคัญมาก: ห้ามมี Transition เด็ดขาด! ไม่งั้นจะกระตุก 🚨 */
+    transition: none !important;
+    transform: scale(0.6); /* ค่าเริ่มต้น */
+}
+
+.window-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.window-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.4); /* Zoom in more as requested */
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+}
+
+.text-overlay h1 {
+    font-size: 6vw;
+    line-height: 1.1;
+    color: white;
+    margin: 0;
+    text-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+
+
+/* === DESKTOP APP SHOWCASE SECTION === */
+.desktop-app-section {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    margin: 0;
+    padding: 80px 5%;
+    gap: 60px;
+    
+    /* Orange gradient background */
+    background: linear-gradient(135deg, #FF9500 0%, #FF6B00 100%);
+    
+    position: relative;
+    z-index: 100;
+    box-sizing: border-box;
+    min-height: 100vh; /* Changed from 300vh since we only have 1 text block now */
+}
+
+/* Keep orange gradient for all themes */
+.desktop-app-section[data-theme="0"],
+.desktop-app-section[data-theme="1"],
+.desktop-app-section[data-theme="2"] {
+    background: linear-gradient(135deg, #FF9500 0%, #FF6B00 100%);
+}
+
+.app-left-column {
+    flex: 1;
+    padding-right: 40px;
+    position: relative;
+}
+
+.app-text-block {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 0;
+    opacity: 1; /* Changed from 0.3 since we only have one block */
+    transition: opacity 0.6s ease;
+}
+
+.app-text-block.active {
+    opacity: 1;
+}
+
+.app-text-block h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #1d1d1f; /* Changed to dark color for better visibility */
+}
+
+.app-text-block p {
+    font-size: 21px;
+    line-height: 1.5;
+    color: #1d1d1f; /* Changed to dark color for better visibility */
+    max-width: 500px;
+}
+
+.app-text-block p strong {
+    color: #000000; /* Make strong text even darker */
+}
+
+.app-right-column {
+    flex: 1;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-image-container {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    max-width: 700px;
+}
+
+/* === STATIC IMAGE DISPLAY (No zoom animation) === */
+.app-split-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.app-zoom-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1); /* Back to normal */
+    border-radius: 40px;
+    transition: opacity 0.8s ease; /* Smooth fade only */
+}
+
+/* Active image is visible */
+.app-zoom-img.active {
+    opacity: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .desktop-app-section {
+        flex-direction: column;
+        padding: 40px 20px;
+        min-height: auto;
+    }
+
+    .app-right-column {
+        position: relative;
+        height: 60vh;
+        margin-bottom: 40px;
+    }
+
+    .app-text-block {
+        height: auto;
+        min-height: 60vh;
+    }
+
+    .app-text-block h2 {
+        font-size: 36px;
+    }
+
+    .app-text-block p {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+
+
+/* === WAITLIST POPUP MODAL === */
+.waitlist-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.waitlist-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.waitlist-modal-content {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    padding: 50px 40px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: translateY(50px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.waitlist-modal-overlay.active .waitlist-modal-content {
+    transform: translateY(0);
+}
+
+.waitlist-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #1d1d1f;
+    font-size: 28px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.waitlist-modal-close:hover {
+    background: rgba(0, 0, 0, 0.15);
+    transform: rotate(90deg);
+}
+
+.waitlist-popup-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.waitlist-popup-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 0 0 15px 0;
+}
+
+.waitlist-popup-header p {
+    font-size: 16px;
+    color: #86868b;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.waitlist-popup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.waitlist-popup-input {
+    padding: 18px 24px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    font-size: 16px;
+    color: #1d1d1f;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.waitlist-popup-input::placeholder {
+    color: #86868b;
+}
+
+.waitlist-popup-input:focus {
+    border-color: #0071e3;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 113, 227, 0.2);
+}
+
+.waitlist-popup-btn {
+    padding: 18px 32px;
+    background: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%);
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 198, 255, 0.4);
+}
+
+.waitlist-popup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(0, 198, 255, 0.6);
+}
+
+.waitlist-popup-footer {
+    text-align: center;
+}
+
+.waitlist-popup-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #1d1d1f;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .waitlist-modal-content {
+        padding: 40px 30px;
+    }
+    
+    .waitlist-popup-header h2 {
+        font-size: 28px;
+    }
+}
