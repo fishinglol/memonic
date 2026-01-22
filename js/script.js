@@ -392,35 +392,39 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Joining...';
             
+            // 👇 แก้ตรงนี้: ใส่ลิงก์ Formspree ของคุณ (ผมใส่ให้แล้ว)
+            const FORMSPREE_ENDPOINT = "https://formspree.io/f/mjggqppv"; 
+
             try {
-                const response = await fetch('http://localhost:5000/api/waitlist', {
+                const response = await fetch(FORMSPREE_ENDPOINT, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ email: email })
                 });
                 
-                const data = await response.json();
-                
                 if (response.ok) {
-                    alert('🎉 Success! You\'re on the waitlist. We\'ll notify you at ' + email);
-                    form.reset();
+                    // ✅ ถ้าสำเร็จ
+                    alert('🎉 You are on the waitlist! We will notify you.');
+                    if (form) form.reset();
+                    if (typeof closeWaitlistPopup === 'function') {
+                        closeWaitlistPopup();
+                    }
                 } else {
-                    // Handle specific error cases
-                    if (response.status === 409) {
-                        alert('This email is already registered on our waitlist!');
-                    } else if (response.status === 400) {
-                        alert('Please enter a valid email address');
+                    // ❌ ถ้ามี Error
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        alert(data["errors"].map(error => error["message"]).join(", "));
                     } else {
-                        alert('Something went wrong. Please try again later.');
+                        alert('Something went wrong. Please try again.');
                     }
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Unable to connect to server. Please make sure the backend is running and try again.');
+                alert('Connection error. Please check your internet.');
             } finally {
-                // Re-enable button
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalBtnText;
             }
@@ -598,33 +602,38 @@ if (waitlistPopupForm) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Joining...';
         
+        // 👇 แก้ตรงนี้: ใส่ลิงก์ Formspree ของคุณ (ผมใส่ให้แล้ว)
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/mjggqppv"; 
+
         try {
-            const response = await fetch('http://localhost:5000/api/waitlist', {
+            const response = await fetch(FORMSPREE_ENDPOINT, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ email: email })
             });
             
-            const data = await response.json();
-            
             if (response.ok) {
-                alert('🎉 Success! You\'re on the waitlist. We\'ll notify you at ' + email);
-                waitlistPopupForm.reset();
-                closeWaitlistPopup();
+                // ✅ ถ้าสำเร็จ
+                alert('🎉 You are on the waitlist! We will notify you.');
+                if (waitlistPopupForm) waitlistPopupForm.reset();
+                if (typeof closeWaitlistPopup === 'function') {
+                    closeWaitlistPopup();
+                }
             } else {
-                if (response.status === 409) {
-                    alert('This email is already registered on our waitlist!');
-                } else if (response.status === 400) {
-                    alert('Please enter a valid email address');
+                // ❌ ถ้ามี Error
+                const data = await response.json();
+                if (Object.hasOwn(data, 'errors')) {
+                    alert(data["errors"].map(error => error["message"]).join(", "));
                 } else {
-                    alert('Something went wrong. Please try again later.');
+                    alert('Something went wrong. Please try again.');
                 }
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Unable to connect to server. Please make sure the backend is running and try again.');
+            alert('Connection error. Please check your internet.');
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = originalBtnText;
